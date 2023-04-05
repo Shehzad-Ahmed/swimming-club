@@ -13,5 +13,5 @@ class EventTypes(models.Model):
         verbose_name_plural = "Event Types"
 
         constraints = [
-            models.UniqueConstraint(Lower('category'), name='unique_lower_gala_event_type')
+            models.UniqueConstraint(Lower('type'), name='unique_lower_gala_event_type')
         ]

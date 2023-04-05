@@ -23,7 +23,7 @@ class Users(Base, AbstractUser):
         },
     )
 
-    # retailer = models.ForeignKey("customers.Retailers", on_delete=models.RESTRICT)
+    family = models.ForeignKey("swimmers.Families", on_delete=models.RESTRICT, null=False)
 
     username = None
 
