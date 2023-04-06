@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.db import models
 
+from core.managers.users import CustomUserManager
 from core.models import Base
 
 
@@ -25,6 +26,8 @@ class Users(Base, AbstractUser):
 
     family = models.ForeignKey("swimmers.Families", on_delete=models.RESTRICT, null=False)
 
+    date_of_birth = models.DateField(null=False)
+
     username = None
 
     EMAIL_FIELD = "email"
@@ -32,6 +35,8 @@ class Users(Base, AbstractUser):
     USERNAME_FIELD = "email"
 
     REQUIRED_FIELDS = []
+
+    objects = CustomUserManager()
 
     class Meta:
 

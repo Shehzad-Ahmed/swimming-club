@@ -22,7 +22,7 @@ class Squads(Base):
     participants = models.ManyToManyField("core.Users")
 
     skill_level = models.PositiveIntegerField(
-        validators=MaxValueValidator(9, message="Skill level needs to be between 0 to 9")
+        validators=[MaxValueValidator(9, message="Skill level needs to be between 0 to 9")]
     )
 
     class Meta:

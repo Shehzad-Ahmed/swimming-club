@@ -1,0 +1,33 @@
+[
+  {
+    "model": "core.users",
+    "fields": {
+        "password": "pbkdf2_sha256$390000$ONpqskb6mRLizCPow6ikkn$ze3ZYD261qY1dNU5GWr/2Ks4QnTkWVlElr7rX9Tu6uE=",
+        "last_login": "2023-04-06T14:17:51Z",
+        "is_superuser": true,
+        "first_name": "Admin",
+        "last_name": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2023-04-06T14:17:46Z",
+        "created_on": "2023-04-06T14:18:25.259Z",
+        "updated_on": "2023-04-06T14:18:25.259Z",
+        "deleted": false,
+        "email": "admin@roadcollege.co",
+        "date_of_birth": "1990-01-01",
+        "family": "1d0cde11-8f28-419b-9b6e-0e3d0f678f01",
+        "groups": [],
+        "user_permissions": []
+    }
+  },
+  {
+    "model": "swimmers.families",
+    "pk": "1d0cde11-8f28-419b-9b6e-0e3d0f678f01",
+    "fields": {
+      "name": "Road College",
+      "created_by": ["admin@roadcollege.co"],
+      "created_on": "2023-04-06T14:18:25.259Z",
+      "updated_on": "2023-04-06T14:18:25.259Z"
+    }
+  }
+]

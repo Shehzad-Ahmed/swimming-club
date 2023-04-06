@@ -1,0 +1,37 @@
+[
+  {
+    "model": "auth.group",
+    "fields": {
+      "name": "Admins",
+      "permissions": []
+    }
+  },
+  {
+    "model": "auth.group",
+    "fields": {
+      "name": "Coaches",
+      "permissions": []
+    }
+  },
+  {
+    "model": "auth.group",
+    "fields": {
+      "name": "Adult Swimmers",
+      "permissions": []
+    }
+  },
+  {
+    "model": "auth.group",
+    "fields": {
+      "name": "Parents",
+      "permissions": []
+    }
+  },
+  {
+    "model": "auth.group",
+    "fields": {
+      "name": "Young Swimmer",
+      "permissions": []
+    }
+  }
+]
