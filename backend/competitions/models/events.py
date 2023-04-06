@@ -14,3 +14,5 @@ class Events(Base):
     pool = models.ForeignKey(to="administration.Pools", on_delete=models.DO_NOTHING, null=True)
 
     gala = models.ForeignKey(to="competitions.Galas", on_delete=models.RESTRICT, null=False)
+
+    participants = models.ManyToManyField(to="core.Users", through="competitions.Participation")
