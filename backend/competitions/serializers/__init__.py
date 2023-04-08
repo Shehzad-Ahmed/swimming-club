@@ -1,0 +1,2 @@
+from competitions.serializers.galas import GalasReadOnlySerializer
+from competitions.serializers.results import ResultsSerializer

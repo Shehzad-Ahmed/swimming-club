@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 Users = get_user_model()
@@ -21,6 +22,7 @@ class UsersSerializer(serializers.ModelSerializer):
             "email",
             "family",
             "date_of_birth",
+            "password",
         )
 
         read_only_fields = (
@@ -30,6 +32,24 @@ class UsersSerializer(serializers.ModelSerializer):
             "deleted",
             "family",
         )
+
+
+class UsersUpdateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+
+        model = Users
+
+        fields = (
+            "first_name",
+            "last_name",
+            "email",
+            "date_of_birth",
+        )
+
+    # def validate_date_of_birth(self, instance):
+    #     if self.context["request"].user != instance and age():
+    #
 
 
 class UserTokenObtainPairSerializer(TokenObtainPairSerializer):

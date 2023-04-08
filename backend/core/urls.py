@@ -16,11 +16,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework import routers
+
+from core import views
+
+router = routers.DefaultRouter()
+
+router.register("users", viewset=views.UsersViewSet, basename="users")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/', include('swimmers.urls')),
+    path('api/core/', include(router.urls)),
+    path('api/swimmers/', include('swimmers.urls')),
+    path('api/training/', include('training.urls')),
+    path('api/competitions/', include('competitions.urls'))
 ]
