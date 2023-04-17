@@ -1,1 +1,3 @@
+from swimmers.serializers.families import FamiliesSerializer
 from swimmers.serializers.registration import RegistrationSerializer
+from swimmers.serializers.families import FamiliesMixinSerializer

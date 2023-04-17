@@ -10,3 +10,7 @@ class DifficultyLevelChoice(models.TextChoices):
     ADVANCED = "advanced", "Advanced"
 
     ELITE = "elite", "Elite"
+
+FAMILY_NAME_BLACKLIST = (
+    "road college", "roadcollege", "college", "road", "college road", "college"
+)

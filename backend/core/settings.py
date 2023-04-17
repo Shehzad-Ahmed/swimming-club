@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'django_extensions',
     'rest_framework',
     'rest_framework_simplejwt',
@@ -163,9 +164,9 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=2),
-    'ROTATE_REFRESH_TOKENS': False,
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=2),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=3),
+    'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': False,
     'UPDATE_LAST_LOGIN': False,
 
@@ -192,5 +193,17 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
-    'TOKEN_OBTAIN_SERIALIZER': 'pharmaB2B.core.serializers.UserTokenObtainPairSerializer',
+    'TOKEN_OBTAIN_SERIALIZER': 'core.serializers.UserTokenObtainPairSerializer',
+    "TOKEN_REFRESH_SERIALIZER": "core.serializers.UserTokenRefreshSerializer",
+
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3005",
+    "https://localhost:3005",
+]
+
+# CSRF_TRUSTED_ORIGINS = [
+#     "http://localhost:3005",
+#     "http://localhost"
+#     ]

@@ -11,6 +11,6 @@ class EventsReadOnlySerializer(serializers.Serializer):
 
     duration = serializers.DurationField()
 
-    pool = serializers.SlugRelatedField(slug_field="code")
+    # pool = serializers.SlugRelatedField(slug_field="code")
 
     gala = GalasReadOnlySerializer()

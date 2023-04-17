@@ -29,7 +29,7 @@ class UsersViewSet(BaseGenericViewSet,
     }
 
     def get_default_queryset(self):
-        self.queryset.filter(family=self.request.user.family).all()
+        return self.queryset.filter(family=self.request.user.family).all()
 
     def create(self, request, *args, **kwargs):
         """

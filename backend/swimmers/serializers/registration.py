@@ -54,4 +54,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
         if utils.age(user.date_of_birth) < 18:
             raise ValidationError("User must be 18 years old.")
 
-#{ "family_name": "Memon",    "parent": false,"users":{"first_name": "Shehzad","last_name": "Memon","email": "shehzad@roadcollege.co","date_of_birth": "01-01-1996"}}
+    @classmethod
+    def validate_name(cls, name):
+        from swimmers.serializers import FamiliesMixinSerializer
+        return FamiliesMixinSerializer.validate_name(name)
