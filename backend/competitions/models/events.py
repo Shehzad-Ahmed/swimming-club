@@ -1,3 +1,4 @@
+from django.core.validators import MaxValueValidator
 from django.db import models
 
 from core.models import Base
@@ -16,3 +17,8 @@ class Events(Base):
     gala = models.ForeignKey(to="competitions.Galas", on_delete=models.RESTRICT, null=False)
 
     participants = models.ManyToManyField(to="core.Users", through="competitions.Participation")
+
+    skill_level = models.PositiveIntegerField(
+        default=0,
+        validators=[MaxValueValidator(9, message="Skill level needs to be between 0 to 9")]
+    )

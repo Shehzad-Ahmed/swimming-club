@@ -1,1 +1,3 @@
-from core.serializers.users import UsersUpdateSerializer, UserTokenObtainPairSerializer, UserTokenRefreshSerializer
+from core.serializers.users import UsersUpdateSerializer, UserTokenObtainPairSerializer, UserTokenRefreshSerializer, \
+    UsersParticipantsReadOnlySerializer
+

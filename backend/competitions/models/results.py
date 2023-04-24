@@ -5,7 +5,7 @@ from core.models import Base
 
 class Results(Base):
 
-    participation = models.ForeignKey(to="competitions.Participation", on_delete=models.CASCADE, null=False)
+    participation = models.ForeignKey(to="competitions.Participation", on_delete=models.RESTRICT, null=False)
 
     attended = models.BooleanField(default=True)
 

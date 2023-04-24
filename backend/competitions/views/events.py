@@ -1,8 +1,9 @@
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 
 from competitions.models import Events
 from competitions.serializers.events import EventsReadOnlySerializer
+from core import utils
 
 
 class EventsViewSets(viewsets.ReadOnlyModelViewSet):
@@ -11,4 +12,9 @@ class EventsViewSets(viewsets.ReadOnlyModelViewSet):
 
     queryset = Events.objects.filter(deleted=False).all()
 
-    permission_classes = (IsAuthenticated, )
+    # This permission class allows anonymous users to see events.
+    permission_classes = (DjangoModelPermissionsOrAnonReadOnly, )
+
+    def get_queryset(self):
+        # Can only see events starting ahead.
+        return super().get_queryset().filter(start_on__gt=utils.get_datetime(), deleted=False)

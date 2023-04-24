@@ -119,3 +119,10 @@ class UserTokenRefreshSerializer(TokenRefreshSerializer):
             data["refresh"] = str(refresh)
 
         return data
+
+
+class UsersParticipantsReadOnlySerializer(serializers.Serializer):
+
+    first_name = serializers.CharField()
+
+    last_name = serializers.CharField()
