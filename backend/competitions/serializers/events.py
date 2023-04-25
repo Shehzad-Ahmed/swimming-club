@@ -32,3 +32,12 @@ class EventsReadOnlySerializer(serializers.Serializer):
             return instance.participation_set.get(participant=request.user.id).id
         except ObjectDoesNotExist:
             return None
+
+
+class EventsParticipationReadOnlySerializer(EventsReadOnlySerializer):
+
+    participation_id = None
+
+    participants = None
+
+    pool = None

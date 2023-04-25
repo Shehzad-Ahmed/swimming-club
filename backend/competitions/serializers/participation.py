@@ -2,6 +2,7 @@ from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
 from competitions.models import Participation
+from competitions.serializers import EventsParticipationReadOnlySerializer
 from core import utils
 
 
@@ -25,3 +26,8 @@ class ParticipationSerializer(serializers.ModelSerializer):
             # In case someone tries to participate in old events.
             raise ValidationError("Can not participate in past events.")
         return attrs
+
+
+class ResultsParticipationReadOnlySerializer(serializers.Serializer):
+
+    event = EventsParticipationReadOnlySerializer()

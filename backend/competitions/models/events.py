@@ -22,3 +22,5 @@ class Events(Base):
         default=0,
         validators=[MaxValueValidator(9, message="Skill level needs to be between 0 to 9")]
     )
+
+    results_published = models.BooleanField(default=False)

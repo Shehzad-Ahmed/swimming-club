@@ -123,6 +123,8 @@ class UserTokenRefreshSerializer(TokenRefreshSerializer):
 
 class UsersParticipantsReadOnlySerializer(serializers.Serializer):
 
+    id = serializers.UUIDField()
+
     first_name = serializers.CharField()
 
     last_name = serializers.CharField()
