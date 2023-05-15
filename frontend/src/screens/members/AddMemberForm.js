@@ -1,17 +1,16 @@
 import { useState } from 'react';
 import { Button, Container, Form, InputGroup } from 'react-bootstrap';
 import { toast } from 'react-toastify';
-import signup from './api/signup';
+import CreateMember from './api/createMember';
 
-const SignUpForm = (props) => {
+const AddMemberForm = (props) => {
   
   const { onSuccess } = props;
   const [fullName, setFullName] = useState(null);
   const [email, setEmail] = useState(null);
-  const [familyName, setFamilyName] = useState(null);
-  const [isParent, setIsParent] = useState(false);
   const [dateOfBirth, setDateOfBirth] = useState(null);
   const [password, setPassword] = useState(null);
+  const {createMemberAPI} = CreateMember();
 
 
   const onSignInSubmitHandler = async (event) => {
@@ -19,16 +18,14 @@ const SignUpForm = (props) => {
     event.stopPropagation();
     let [firstName, ...lastName] = fullName.split(" ")
     try {
-      await signup({
+      await createMemberAPI({
         firstName: firstName,
         lastName: lastName? lastName.join(" "): "",
-        familyName: familyName,
         email: email,
-        isParent: isParent,
         dateOfBirth: dateOfBirth,
         password: password
       });
-      toast.success("Registration successful, please sign in to continue")
+      toast.success("Member added successfully.")
       onSuccess();
     } catch (error) {
       toast.error(JSON.stringify(error.response.data));
@@ -37,20 +34,12 @@ const SignUpForm = (props) => {
 
   return (
     <Container className="main-container" style={{ maxWidth: '40rem' }}>
-      <h1 className="my-3">Sign Up</h1>
+      <h1 className="my-3">Add children details.</h1>
       <Form onSubmit={onSignInSubmitHandler}>
       <Form.Group className="mb-3" controlId="fullName">
         <Form.Label>Full Name</Form.Label>
         <Form.Control
           onChange={(e) => setFullName(e.target.value)}
-          type="text"
-          required
-        />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="family Name">
-        <Form.Label>Family Name</Form.Label>
-        <Form.Control
-          onChange={(e) => setFamilyName(e.target.value)}
           type="text"
           required
         />
@@ -79,17 +68,11 @@ const SignUpForm = (props) => {
             required
           />
         </InputGroup>
-      <InputGroup className="mb-3">
-      <InputGroup.Text>Sign up as Parent.</InputGroup.Text>
-        <InputGroup.Checkbox aria-label="Sign up as Parent."
-            onChange={(e) => setIsParent(e.target.value)}
-        />
-      </InputGroup>
         <div className="mb-3">
-          <Button type="submit">Sign Up</Button>
+          <Button type="submit">Create</Button>
         </div>
       </Form>
     </Container>
   );
 };
-export default SignUpForm;
+export default AddMemberForm;

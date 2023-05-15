@@ -8,6 +8,10 @@ import Login from './screens/login/Login';
 import Dashboard from './screens/dashboard/Dashboard2';
 import Home from './screens/home/Home';
 import Profile from './screens/profile/Profile';
+import GalaEvents from './screens/gala/GalaEvents';
+import Results from './screens/results/Results';
+import PracticeSessions from './screens/practice/PracticeSessions';
+import Members from './screens/members/Members';
 // import Sidebar from './screens/Sidebar';
 
 function App() {
@@ -31,6 +35,10 @@ function App() {
             <Route path="/" element={<Dashboard/>}></Route>
             <Route path="home/" element={<Home></Home>}></Route>
             <Route path="profile/" element={<Profile></Profile>}></Route>
+            <Route path="gala-events/" element={<GalaEvents></GalaEvents>}></Route>
+            <Route path="results/" element={<Results></Results>}></Route>
+            <Route path="practice-sessions" element={<PracticeSessions></PracticeSessions>}></Route>
+            <Route path="members/" element={<Members></Members>}></Route>
           </Routes>
         </main>
       </div>

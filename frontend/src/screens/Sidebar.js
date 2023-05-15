@@ -50,7 +50,7 @@ const Sidebar = ({children}) => {
           }
         >
           <a href="/" className="text-decoration-none" style={{color:"inherit"}}>
-            Contrast
+            Road College
           </a>
         </CDBSidebarHeader>
 
@@ -64,18 +64,40 @@ const Sidebar = ({children}) => {
               <CDBSidebarMenuItem
                 icon="columns"
               >
-                dashboard
+                Dashboard
               </CDBSidebarMenuItem>
             </NavLink>
             <NavLink
               exact
-              to="/tables"
+              to="/gala-events"
               activeClassName="activeClicked"
             >
               <CDBSidebarMenuItem
-                icon="table"
+                icon="calendar"
               >
-                tables
+                Gala Events
+              </CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink
+              exact
+              to="/results"
+              activeClassName="activeClicked"
+            >
+              <CDBSidebarMenuItem
+                icon="bar-chart"
+              >
+                Results
+              </CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink
+              exact
+              to="/practice-sessions"
+              activeClassName="activeClicked"
+            >
+              <CDBSidebarMenuItem
+                icon="thermometer-half"
+              >
+                Practice Sessions
               </CDBSidebarMenuItem>
             </NavLink>
             <NavLink
@@ -86,16 +108,27 @@ const Sidebar = ({children}) => {
               <CDBSidebarMenuItem
                 icon="user"
               >
-                profile
+                Profile
               </CDBSidebarMenuItem>
             </NavLink>
+            {state?.userDetails?.role === "Parents"? <NavLink
+              exact
+              to="/members"
+              activeClassName="activeClicked"
+            >
+              <CDBSidebarMenuItem
+                icon="user-plus"
+              >
+                Members
+              </CDBSidebarMenuItem>
+            </NavLink>: <div></div>}
             <NavLink
               exact
               to="/home"
               activeClassName="activeClicked"
             >
               <CDBSidebarMenuItem
-                icon="logout"
+                icon="sign-out"
                 onClick={signOutHandler}
               >
                 Sign Out

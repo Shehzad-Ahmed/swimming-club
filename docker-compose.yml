@@ -20,6 +20,8 @@ services:
       - 3005:3000
     links:
       - backend
+    volumes:
+      - ./frontend:/app
   postgres:
       # Official Postgres image from DockerHub (we use the last version)
     image: 'postgres:latest'
