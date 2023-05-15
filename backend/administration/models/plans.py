@@ -22,4 +22,8 @@ class Plans(Base):
     billing_period = models.CharField(choices=BillingPeriods.choices, null=False, max_length=20)
 
     features = models.JSONField(default={})
-    
+
+    class Meta:
+        verbose_name = "Subscription Plan"
+
+        verbose_name_plural = "Subscription Plans"

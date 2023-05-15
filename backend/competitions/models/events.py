@@ -24,3 +24,9 @@ class Events(Base):
     )
 
     results_published = models.BooleanField(default=False)
+
+    class Meta:
+
+        verbose_name = "Event"
+
+        verbose_name_plural = "Events"

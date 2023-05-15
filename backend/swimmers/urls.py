@@ -5,6 +5,7 @@ from swimmers import views
 router = routers.DefaultRouter()
 
 router.register("register", viewset=views.RegistrationViewSet)
+router.register("families", viewset=views.FamiliesViewSet, basename="families")
 
 
 urlpatterns = [

@@ -15,3 +15,8 @@ class EventTypes(models.Model):
         constraints = [
             models.UniqueConstraint(Lower('type'), name='unique_lower_gala_event_type')
         ]
+
+    class Meta:
+        verbose_name = "Event Type"
+
+        verbose_name_plural = "Event Types"

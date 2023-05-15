@@ -1,1 +1,2 @@
 from training.views.performance import PerformanceViewSet
+from training.views.practice_sessions import PracticeSessionsViewSet

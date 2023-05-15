@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.hashers import make_password
 from django.contrib.auth.password_validation import validate_password
 from django.db import transaction
 from rest_framework import serializers
@@ -39,7 +40,7 @@ class UsersSerializer(serializers.ModelSerializer):
     @classmethod
     def validate_password(cls, password):
         validate_password(password)
-        return password
+        return make_password(password)
 
 
 class UsersUpdateSerializer(serializers.ModelSerializer):
@@ -63,9 +64,10 @@ class UsersUpdateSerializer(serializers.ModelSerializer):
         with transaction.atomic():
             data = super().update(instance, validated_data)
             from swimmers.serializers import FamiliesSerializer
-            family_ser = FamiliesSerializer(instance=instance.family, data={"name": family_name})
-            family_ser.is_valid(raise_exception=True)
-            family_ser.save()
+            if family_name:
+                family_ser = FamiliesSerializer(instance=instance.family, data={"name": family_name})
+                family_ser.is_valid(raise_exception=True)
+                family_ser.save()
         return data
 
     # def validate_date_of_birth(self, instance):
@@ -128,3 +130,10 @@ class UsersParticipantsReadOnlySerializer(serializers.Serializer):
     first_name = serializers.CharField()
 
     last_name = serializers.CharField()
+
+
+class UsersReadOnlySerializer(UsersParticipantsReadOnlySerializer):
+
+    email = serializers.CharField()
+
+    date_of_birth = serializers.DateField()

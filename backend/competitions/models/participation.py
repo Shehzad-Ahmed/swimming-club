@@ -16,3 +16,8 @@ class Participation(models.Model):
 
     def __str__(self):
         return f"{self.event.gala.title}-{self.event.type_id}-{self.participant.email}"
+
+    class Meta:
+        verbose_name = "Participation"
+
+        verbose_name_plural = "Participation"

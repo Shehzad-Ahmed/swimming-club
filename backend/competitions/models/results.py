@@ -15,3 +15,8 @@ class Results(Base):
 
     # Depending on the event type a record note will be added.
     record = models.TextField()
+
+    class Meta:
+        verbose_name = "Result"
+
+        verbose_name_plural = "Results"

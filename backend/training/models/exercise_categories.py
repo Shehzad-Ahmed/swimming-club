@@ -24,3 +24,6 @@ class ExerciseCategories(models.Model):
             models.UniqueConstraint(Lower('category'), name='unique_lower_exercise_category')
         ]
         # The unique constraint will avoid case mismatching.
+
+    def __str__(self):
+        return f"{self.category}"

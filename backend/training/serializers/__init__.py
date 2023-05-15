@@ -1,1 +1,2 @@
+from training.serializers.exercises import ExercisesSerializer
 from training.serializers.performance import PerformanceSerializer

@@ -12,3 +12,8 @@ class Galas(Base):
     start_on = models.DateTimeField(null=False)
 
     end_on = models.DateTimeField(null=False)
+
+    class Meta:
+        verbose_name = "Gala"
+
+        verbose_name_plural = "Galas"

@@ -10,7 +10,9 @@ class Squads(Base):
     Squad of swimmers.
     """
 
-    supervisor = models.ForeignKey(to="administration.StaffProfiles", null=True, on_delete=models.RESTRICT)
+    supervisor = models.ForeignKey(
+        to="administration.StaffProfiles", null=True, on_delete=models.RESTRICT, default=None, blank=True
+    )
 
     name = models.CharField(max_length=100, null=False, unique=True)
 
@@ -27,6 +29,13 @@ class Squads(Base):
 
     class Meta:
 
+        verbose_name = "Squad"
+
+        verbose_name_plural = "Squads"
+
         constraints = [
             models.UniqueConstraint(Lower('name'), name='unique_lower_name_squad')
         ]
+
+    def __str__(self):
+        return f"{self.name} - {self.skill_level}"
